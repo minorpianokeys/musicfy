@@ -1,0 +1,56 @@
+.track-card {
+    display: flex;
+    background-color: #E3F2FD;
+    margin: 10px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    height: 200px;
+}
+
+.track-card-img img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px 0px 0px 20px;
+    cursor: pointer;
+}
+
+.track-card-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.track-card-name h3 {
+    margin: 0;
+}
+
+.track-card-name p {
+    margin: 0;
+}
+
+.track-card-name p:hover {
+    color: aqua;
+    cursor: pointer;
+}
+
+.like-container {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: flex-start;
+    width: 100px;
+}
+
+.heart {
+    width: 20px;
+}
+
+.like-container p {
+    padding-left: 5px;
+    margin: 0;
+}
+
+

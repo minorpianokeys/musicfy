@@ -1,0 +1,163 @@
+
+  
+.container {
+display: flex;
+flex-direction: column;
+align-items: center; /* Center children horizontally */
+justify-content: center; /* Center children vertically */
+text-align: center; /* Optional: Center-align text */
+max-width: auto;
+padding: 20px;
+}
+
+.track-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    background-color: #f5f5f5; /* Light background */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px; /* Space below banner */
+    min-width: 1000px;
+    height: auto;
+}
+
+.track-banner-2 {
+    display: flex;
+    gap: 20px;
+}
+
+/* Track Title */
+.track-banner h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Track Artwork */
+.track-banner img {
+    max-width: 350px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Audio Player Styling */
+.track-banner audio {
+    margin-top: 15px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+}
+
+.comments-info-container {
+    display: flex;
+    justify-content: space-between; /* Space between the two columns */
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px; /* Optional: Adds space between the two sections */
+    min-width: 1000px;
+}
+
+/* Comment Container and Track Info */
+.comment-container, .track-info {
+    flex: 1; /* Ensures both take up equal space */
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* Track Info Section */
+.track-info {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.comment-container {
+    width: 70%;
+}
+
+.track-info {
+    max-width: 30%;
+}
+
+/* Comments Section */
+.comments {
+    margin-top: 30px;
+}
+
+/* Form Container */
+.comment-form {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 10px; /* Space between input and button */
+    margin-bottom: 20px;
+    background-color: ;
+}
+
+/* Input Styling */
+.comment-form input {
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid #979797;
+    border-radius: 0px;
+    font-size: 14px;
+    margin: auto;
+    background-color: #f5f5f5;
+    outline: none;
+    transition: border-color 2s ease;
+}
+
+.comment-form input:focus, input:active {
+    border-bottom-color: #494949; /* Darker blue on focus/active */
+}
+
+/* Button Styling */
+.comment-form button {
+    padding: 10px 20px;
+    background-color: #979797;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    white-space: nowrap; /* Prevents text from breaking in the button */
+}
+
+.comment-form button:hover {
+    background-color: #676767;
+}
+
+/* Comments Container */
+.comments {
+    margin-top: 20px;
+    padding: 10px 0;
+}
+
+/* Comment Card */
+.comment-card {
+    background-color: #979797;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+
+/* Comment Text */
+.comment-card p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+/* Comment Author */
+.comment-card .author {
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+}

@@ -1,6 +1,7 @@
 import { useOutletContext, useNavigate } from "react-router";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import Swal from "sweetalert2";
 import "../styles/Form.css"
 
 function Login() {
@@ -32,6 +33,13 @@ function Login() {
                     r.json()
                     .then(user => setUser(user))
                     .then(() => navigate('/'))
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Email or Password incorrect",
+                      });
                 }
             })
             

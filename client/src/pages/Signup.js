@@ -31,12 +31,12 @@ function Signup() {
         
         const imageFormData = new FormData();
         imageFormData.append("file", imageFile);
-        imageFormData.append("upload_preset", "ftb7bwla"); // Your image upload preset
-        imageFormData.append("resource_type", "image"); // Use "image" for image uploads
+        imageFormData.append("upload_preset", "ftb7bwla");
+        imageFormData.append("resource_type", "image");
 
         Axios.post("https://api.cloudinary.com/v1_1/dlmqqypq1/image/upload", imageFormData)
             .then((imageResponse) => {
-                const imageUrl = imageResponse.data.url; // Image URL from Cloudinary
+                const imageUrl = imageResponse.data.url;
 
                 const dataToPost = {
                     ...newUserData,

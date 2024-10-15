@@ -10,8 +10,6 @@ function TrackInfo() {
     const { id, title, file_url, description, genre, track_art, comments } = track;
     const params = useParams()
 
-    console.log(track)
-
     useEffect(() => {
         fetch(`/tracks/${params.id}`)
         .then(r => r.json())

@@ -35,7 +35,7 @@ function Comments({ trackId, comments }) {
         if (user && user.id) {
             formik.setFieldValue("user_id", user.id);
         }
-    }, [user]); // This runs when 'user' changes
+    }, [user]);
 
     return (
         <div>

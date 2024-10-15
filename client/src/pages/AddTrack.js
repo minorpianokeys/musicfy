@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useOutletContext, useNavigate } from "react-router";
 import Axios from "axios";
+import Swal from "sweetalert2";
 import "../styles/Form.css"
 
 function AddTrack() {
@@ -27,53 +28,49 @@ function AddTrack() {
         })
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
-        if (!imageFile || !audioFile) {
-            alert("Please select both an image and an audio file.");
-            return;
-        }
-
-        // Upload image to Cloudinary
-        const imageFormData = new FormData();
-        imageFormData.append("file", imageFile);
-        imageFormData.append("upload_preset", "ftb7bwla"); // Your image upload preset
-        imageFormData.append("resource_type", "image"); // Use "image" for image uploads
-
-        Axios.post("https://api.cloudinary.com/v1_1/dlmqqypq1/image/upload", imageFormData)
-            .then((imageResponse) => {
-                const imageUrl = imageResponse.data.url; // Image URL from Cloudinary
-
-                // Upload audio to Cloudinary after the image is uploaded
-                const audioFormData = new FormData();
-                audioFormData.append("file", audioFile);
-                audioFormData.append("upload_preset", "ftb7bwla"); // Your audio upload preset
-                audioFormData.append("resource_type", "video");
-
-                return Axios.post("https://api.cloudinary.com/v1_1/dlmqqypq1/video/upload", audioFormData)
-                    .then((audioResponse) => {
-                        const audioUrl = audioResponse.data.url; // Audio URL from Cloudinary
-                        
-                        const dataToPost = {
-                            ...newTrackData, // Include track name, description, etc.
-                            track_art: imageUrl, // Store image URL
-                            file_url: audioUrl, // Store audio URL
-                        };
-
-                        return fetch("/tracks", {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(dataToPost),
-                        });
-            })
-            .then(navigate(`/profile/${user.id}`))
-            .catch((error) => {
-                console.error('Error uploading files:', error);
+        try {
+            const imageFormData = new FormData();
+            imageFormData.append("file", imageFile);
+            imageFormData.append("upload_preset", "ftb7bwla");
+            imageFormData.append("resource_type", "image");
+    
+            const imageResponse = await Axios.post("https://api.cloudinary.com/v1_1/dlmqqypq1/image/upload", imageFormData);
+            const imageUrl = imageResponse.data.url;
+    
+            const audioFormData = new FormData();
+            audioFormData.append("file", audioFile);
+            audioFormData.append("upload_preset", "ftb7bwla");
+            audioFormData.append("resource_type", "video");
+    
+            const audioResponse = await Axios.post("https://api.cloudinary.com/v1_1/dlmqqypq1/video/upload", audioFormData);
+            const audioUrl = audioResponse.data.url;
+    
+            const dataToPost = {
+                ...newTrackData,
+                track_art: imageUrl,
+                file_url: audioUrl,
+            };
+    
+            await fetch("/tracks", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToPost),
             });
-        })
+    
+            navigate(`/profile/${user.id}`);
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please include audio and track art files",
+              });
+            console.error('Error uploading files:', error);
+        }
     }
 
     useEffect(() => {

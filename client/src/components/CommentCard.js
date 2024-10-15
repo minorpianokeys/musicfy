@@ -1,6 +1,6 @@
 function CommentCard({ comment }) {
 
-    const {body} = comment;
+    const { body } = comment;
 
     return (
         <div className="comment-card">
